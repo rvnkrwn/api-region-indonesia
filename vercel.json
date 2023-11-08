@@ -1,18 +1,18 @@
 {
   "rewrites": [
-    { "source": "/api/provinces", "destination": "/server.js" },
+    { "source": "/api/provinces", "destination": "./server.js" },
     {
       "source": "/api/regencies/*",
-      "destination": "/server.js"
+      "destination": "./server.js"
     },
     {
       "source": "/api/districts/*",
-      "destination": "/server.js"
+      "destination": "./server.js"
     },
     {
       "source": "/api/villages/*",
-      "destination": "/server.js"
+      "destination": "./server.js"
     },
-    { "source": "/(.*)", "destination": "/server.js" }
+    { "source": "/(.*)", "destination": "./server.js" }
   ]
 }
