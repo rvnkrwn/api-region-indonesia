@@ -90,4 +90,4 @@ app.listen(port, () => {
     console.log(`Server running and up at ${port}`)
 })
 
-module.exports = app
+export default app
