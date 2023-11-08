@@ -1,11 +1,18 @@
 {
-  "version": 2,
-  "builds": [{ "src": "server.js", "use": "@now/node" }],
-  "routes": [
-    { "src": "/api/provinces", "dest": "server.js" },
-    { "src": "/api/regencies/*", "dest": "server.js" },
-    { "src": "/api/districts/*", "dest": "server.js" },
-    { "src": "/api/villages/*", "dest": "server.js" },
-    { "src": "/(.*)", "dest": "server.js" }
+  "rewrites": [
+    { "source": "/api/provinces", "destination": "/server.js" },
+    {
+      "source": "/api/regencies/*",
+      "destination": "/api/regencies/*"
+    },
+    {
+      "source": "/api/districts/*",
+      "destination": "/api/districts/*"
+    },
+    {
+      "source": "/api/villages/*",
+      "destination": "/api/villages/*"
+    },
+    { "source": "/(.*)", "destination": "/server.js" }
   ]
 }

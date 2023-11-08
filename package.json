@@ -1,7 +1,7 @@
 {
   "name": "api-region-indonesia",
   "version": "1.0.0",
-  "type": "commonjs",
+  "type": "module",
   "description": "API ini dapat memberikan informasi tentang wilayah indonesia",
   "main": "server.js",
   "author": "Revan Kurniawan <rvnkrwn@gmail.com>",
