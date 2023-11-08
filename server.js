@@ -10,6 +10,12 @@ app.use(cors("*"))
 app.use(express.json())
 app.use(morgan("combined"))
 
+app.get('/welcome', (req, res) => {
+    return res.status(200).json({
+        message: "Welcome to REST API region Indonesia"
+    })
+})
+
 app.get('/api/provinces', async (req, res) => {
     try {
         let provinces = []
