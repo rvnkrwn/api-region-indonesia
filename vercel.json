@@ -3,15 +3,15 @@
     { "source": "/api/provinces", "destination": "/server.js" },
     {
       "source": "/api/regencies/*",
-      "destination": "/api/regencies/*"
+      "destination": "/server.js"
     },
     {
       "source": "/api/districts/*",
-      "destination": "/api/districts/*"
+      "destination": "/server.js"
     },
     {
       "source": "/api/villages/*",
-      "destination": "/api/villages/*"
+      "destination": "/server.js"
     },
     { "source": "/(.*)", "destination": "/server.js" }
   ]
