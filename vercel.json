@@ -8,31 +8,31 @@
   ],
   "routes": [
     {
-      "src": "/api/province",
+      "src": "^/api/province$",
       "dest": "server.js"
     },
     {
-      "src": "/api/regencies/*",
+      "src": "^/api/regencies/[^/]+$",
       "dest": "server.js"
     },
     {
-      "src": "/api/districts/*",
+      "src": "^/api/districts/[^/]+$",
       "dest": "server.js"
     },
     {
-      "src": "/api/villages/*",
+      "src": "^/api/villages/[^/]+$",
       "dest": "server.js"
     },
     {
-      "src": "/api/**/*",
+      "src": "^/api/[^/]+/[^/]+$",
       "dest": "server.js"
     },
     {
-      "src": "/api/**/**",
+      "src": "^/api/[^/]+/[^/]+/[^/]+$",
       "dest": "server.js"
     },
     {
-      "src": "/(.*)",
+      "src": "^/(.*)$",
       "dest": "server.js"
     }
   ]
