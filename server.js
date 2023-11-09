@@ -17,39 +17,31 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/provinces', async (req, res) => {
-    try {
-        let provinces = []
-        fs.createReadStream('./data/provinces.csv')
-            .pipe(csv())
-            .on('data', (row) => {
-                provinces.push(row)
-            })
-            .on('end', () => {
-                return res.json(provinces)
-            })
-    } catch (e) {
-        console.log(e)
-    }
+    fs.readFile('./data/provinces.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            res.status(500).send('Internal Server Error');
+        } else {
+            // Parse the JSON data from the file
+            const parsedData = JSON.parse(data);
+            res.json(parsedData); // Send the JSON data as a response
+        }
+    });
 })
 
 
 app.get('/api/regencies/:provinceId', async (req, res) => {
-    try {
-        let regencies = []
-        fs.createReadStream('./data/regencies.csv')
-            .pipe(csv())
-            .on('data', (row) => {
-                regencies.push(row)
-            })
-            .on('end', async () => {
-                const provinceId = req.params.provinceId
-                const data = regencies.filter((regency) => regency.province_id === provinceId)
-                return res.json(data)
-            })
-    } catch (e) {
-        console.log(e)
-        return res.status(500).json({ error: 'Internal Server Error' })
-    }
+    fs.readFile('./data/provinces.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            res.status(500).send('Internal Server Error');
+        } else {
+            const provinceId = req.params.provinceId
+            // Parse the JSON data from the file
+            const parsedData = JSON.parse(data);
+            res.json(parsedData.filter((regency) => regency.province_id === provinceId)); // Send the JSON data as a response
+        }
+    })
 })
 
 app.get('/api/districts/:regencyId', async (req, res) => {
@@ -80,6 +72,15 @@ app.get('/api/villages/:districtId', async (req, res) => {
                 villages.push(row)
             })
             .on('end', async () => {
+                const jsonContent = JSON.stringify(villages, null, 2); // Convert the JavaScript object to a formatted JSON string
+
+                fs.writeFile('villages.json', jsonContent, 'utf8', (err) => {
+                    if (err) {
+                        console.error('Error writing to file:', err);
+                    } else {
+                        console.log('File has been written successfully');
+                    }
+                });
                 const districtId = req.params.districtId
                 const data = villages.filter((village) => village.district_id === districtId)
                 return res.json(data)
