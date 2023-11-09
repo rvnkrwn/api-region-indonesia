@@ -2,18 +2,38 @@
   "version": 2,
   "builds": [
     {
-      "src": "./server.js",
+      "src": "server.js",
       "use": "@now/node"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "./server.js"
+      "src": "/api/province",
+      "dest": "server.js"
     },
     {
-      "src": "/api/provinces",
-      "dest": "./server.js"
+      "src": "/api/regencies/*",
+      "dest": "server.js"
+    },
+    {
+      "src": "/api/districts/*",
+      "dest": "server.js"
+    },
+    {
+      "src": "/api/villages/*",
+      "dest": "server.js"
+    },
+    {
+      "src": "/api/**/*",
+      "dest": "server.js"
+    },
+    {
+      "src": "/api/**/**",
+      "dest": "server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "server.js"
     }
   ]
 }
