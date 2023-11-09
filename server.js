@@ -3,6 +3,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const fs = require('fs')
 const csv = require('csv-parser')
+const dataProvinces = require('./data/provinces.csv')
 
 const app = express()
 
@@ -19,7 +20,7 @@ app.get('/', (req, res) => {
 app.get('/api/provinces', async (req, res) => {
     try {
         let provinces = []
-        fs.createReadStream('https://rvnkrwn.github.io/api-region-indonesia/data/provinces.csv')
+        fs.createReadStream(dataProvinces)
             .pipe(csv())
             .on('data', (row) => {
                 provinces.push(row)
