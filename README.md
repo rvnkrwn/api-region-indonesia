@@ -4,6 +4,8 @@ API Region Indonesia adalah proyek open-source yang menyediakan data geografis d
 
 https://api-region-indonesia.vercel.app/api/provinces
 
+Example
+
 ```
 curl --location --request GET 'https://api-region-indonesia.vercel.app/api/provinces'
 ```
@@ -36,7 +38,9 @@ Example Response
 
 ### GET Regencies
 
-https://api-region-indonesia.vercel.app/api/regencies/13
+https://api-region-indonesia.vercel.app/api/regencies/:provinceId
+
+Example
 
 ```
 curl --location --request GET 'https://api-region-indonesia.vercel.app/api/regencies/13'
@@ -79,7 +83,9 @@ Example Response
 
 ### GETDistricts
 
-https://api-region-indonesia.vercel.app/api/districts/1307
+https://api-region-indonesia.vercel.app/api/districts/:regencieId
+
+Example
 
 ```
 curl --location --request GET 'https://api-region-indonesia.vercel.app/api/districts/1307'
@@ -112,7 +118,9 @@ Example Response
 
 ### GET Villages
 
-https://api-region-indonesia.vercel.app/api/villages/1307080
+https://api-region-indonesia.vercel.app/api/villages/:districtId
+
+Example
 
 ```
 curl --location --request GET 'https://api-region-indonesia.vercel.app/api/villages/1307080'
