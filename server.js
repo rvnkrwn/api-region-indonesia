@@ -3,7 +3,6 @@ const morgan = require('morgan')
 const cors = require('cors')
 const fs = require('fs')
 const csv = require('csv-parser')
-const dataProvinces = require('./data/provinces.csv')
 
 const app = express()
 
@@ -20,7 +19,7 @@ app.get('/', (req, res) => {
 app.get('/api/provinces', async (req, res) => {
     try {
         let provinces = []
-        fs.createReadStream(dataProvinces)
+        fs.createReadStream('/data/provinces.csv')
             .pipe(csv())
             .on('data', (row) => {
                 provinces.push(row)
@@ -37,7 +36,7 @@ app.get('/api/provinces', async (req, res) => {
 app.get('/api/regencies/:provinceId', async (req, res) => {
     try {
         let regencies = []
-        fs.createReadStream('https://rvnkrwn.github.io/api-region-indonesia/data/regencies.csv')
+        fs.createReadStream('/data/regencies.csv')
             .pipe(csv())
             .on('data', (row) => {
                 regencies.push(row)
@@ -56,7 +55,7 @@ app.get('/api/regencies/:provinceId', async (req, res) => {
 app.get('/api/districts/:regencyId', async (req, res) => {
     try {
         let districts = []
-        fs.createReadStream('https://rvnkrwn.github.io/api-region-indonesia/data/districts.csv')
+        fs.createReadStream('/data/districts.csv')
             .pipe(csv())
             .on('data', (row) => {
                 districts.push(row)
@@ -75,7 +74,7 @@ app.get('/api/districts/:regencyId', async (req, res) => {
 app.get('/api/villages/:districtId', async (req, res) => {
     try {
         let villages = []
-        fs.createReadStream('https://rvnkrwn.github.io/api-region-indonesia/data/villages.csv')
+        fs.createReadStream('./data/villages.csv')
             .pipe(csv())
             .on('data', (row) => {
                 villages.push(row)
