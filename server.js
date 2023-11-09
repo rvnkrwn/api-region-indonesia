@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 app.get('/api/provinces', async (req, res) => {
     try {
         let provinces = []
-        fs.createReadStream('/data/provinces.csv')
+        fs.createReadStream('./data/provinces.csv')
             .pipe(csv())
             .on('data', (row) => {
                 provinces.push(row)
@@ -36,7 +36,7 @@ app.get('/api/provinces', async (req, res) => {
 app.get('/api/regencies/:provinceId', async (req, res) => {
     try {
         let regencies = []
-        fs.createReadStream('/data/regencies.csv')
+        fs.createReadStream('./data/regencies.csv')
             .pipe(csv())
             .on('data', (row) => {
                 regencies.push(row)
@@ -55,7 +55,7 @@ app.get('/api/regencies/:provinceId', async (req, res) => {
 app.get('/api/districts/:regencyId', async (req, res) => {
     try {
         let districts = []
-        fs.createReadStream('/data/districts.csv')
+        fs.createReadStream('./data/districts.csv')
             .pipe(csv())
             .on('data', (row) => {
                 districts.push(row)
