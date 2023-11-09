@@ -1,8 +1,8 @@
-import express from "express"
-import morgan from "morgan"
-import cors from "cors"
-import fs from "fs"
-import csv from "csv-parser"
+const express = require('express')
+const morgan = require('morgan')
+const cors = require('cors')
+const fs = require('fs')
+const csv = require('csv-parser')
 
 const app = express()
 
@@ -96,4 +96,4 @@ app.listen(port, () => {
     console.log(`Server running and up at ${port}`)
 })
 
-export default app
+module.exports = app
